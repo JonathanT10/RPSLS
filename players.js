@@ -32,14 +32,25 @@ class Player {
 }
 
 class Human extends Player {
-    constructor(name){
+    constructor(name, gesture){
         super(name);
+        super(gesture);
+        this.secondGest = this.selectGesture();
     }
+
+
 }
 
 class AI extends Player {
-    constructor(name){
+    constructor(name, gesture){
         super(name);
+        super(gesture);
+        this.randoGest = this.randomGesture(gesture);
+    }
+
+    randomGesture(array){
+        result = array[Math.floor(Math.random()*array.length)];
+        return result;
     }
 }
 let game = new Player();

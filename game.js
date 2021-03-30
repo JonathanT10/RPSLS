@@ -24,6 +24,12 @@ class Game {
         }return numberPlayers;
     }
  
+    compareGesture(gestureOne, gestureTwo){
+        if(gestureOne === gestureTwo){
+            console.log("It is a draw! \n Choose again.");
+        }
+
+    }
 
 }
 
