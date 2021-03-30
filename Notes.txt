@@ -1,12 +1,3 @@
-const Players = require("./players")
-const Human = require("./players")
-const AI= require("./players")
-let prompt = require("prompt-sync")();
-
-class Game {
-    constructor(){
-
-    }
 
     playOption(){
         let numberPlayers = prompt("Would you like to play Single Player or Mulitplayer? \n1. Single Player \n2. Multiplayer\n");
@@ -23,10 +14,3 @@ class Game {
             break;
         }return numberPlayers;
     }
- 
-
-}
-
-//let game = new Players();
-// game.playOption();
-// game.selectGesture();
