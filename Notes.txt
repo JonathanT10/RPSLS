@@ -14,3 +14,142 @@
             break;
         }return numberPlayers;
     }
+
+
+
+ selectGesture(player){
+        let pick = prompt("Pick your move: \n1. " + this.player.gesture[0] + " \n2. " + this.player.gesture[1] + " \n3. " + this.player.gesture[2] + " \n4. " + this.player.gesture[3] + " \n5. " + this.player.gesture["4"]);
+        switch(pick){
+            case "1":
+                player.choosenGest = player.gesture[0];
+                console.log(this.player.gesture[0])
+            break;
+            case "2":
+                player.choosenGest = player.gesture[1];
+                console.log(this.player.gesture[1])
+            break;
+            case "3":
+                player.choosenGest = player.gesture[2];
+                console.log(this.player.gesture[2])
+            break;
+            case "4":
+                player.choosenGest = player.gesture[3];
+                console.log(this.player.gesture[3])
+            break;
+            case "5":
+                player.choosenGest = player.gesture[4];
+                console.log(this.player.gesture[4])
+            break;
+        }
+        return pick;
+    }
+
+
+
+    compareGesture(gestureOne, gestureTwo, player){
+        if(gestureOne === gestureTwo){
+            console.log("It is a draw! \n Choose again.");
+        }
+        else if (gestureOne === player.gesture[0]) {
+            if (gestureTwo === player.gesture[2]) {
+                console.log(player.gesture[0] + " wins!");
+            }
+            else if (gestureTwo === player.gesture[1]) {
+                console.log(player.gesture[1] + " wins!");
+            } else if (gestureTwo === player.gesture[3]) {
+                console.log(player.gesture[0] + " wins!");
+            } else {
+                console.log(player.gesture[5] + " wins!");
+            }
+        }
+        
+        
+        else if (gestureOne === player.gesture[1]) {
+            if (gestureTwo === player.gesture[2]) {
+                console.log(player.gesture[2] + " wins!");
+            } else if (gestureTwo === player.gesture[0]) {
+                console.log(player.gesture[1] + " wins!");
+            } else if (gestureTwo === player.gesture[3]) {
+                console.log(player.gesture[3] + " wins!");
+            } else {
+                console.log(player.gesture[1] + " wins!");
+            }
+        }
+        
+        
+        else if (gestureOne === player.gesture[2]) {
+            if (gestureTwo === player.gesture[1]) {
+                console.log(player.gesture[2] + " wins!");
+            } else if (gestureTwo === player.gesture[0]) {
+                console.log(player.gesture[0] + " wins!");
+            } else if (gestureTwo === player.gesture[3]) {
+                console.log(player.gesture[2] + " wins!");
+            } else {
+                console.log(player.gesture[4] + " wins!");
+            }
+        }
+        
+        
+        else if (gestureOne === player.gesture[3]) {
+            if (gestureTwo === player.gesture[2]) {
+                console.log(player.gesture[2] + " wins!");
+            } else if (gestureTwo === player.gesture[0]) {
+                console.log(player.gesture[0] + " wins!");
+            } else if (gestureTwo === player.gesture[1]) {
+                console.log(player.gesture[3] + " wins!");
+            } else {
+                console.log(player.gesture[3] + " wins!");
+            }
+        }
+        
+        
+        else if (gestureOne === player.gesture[4]) {
+            if (gestureTwo === player.gesture[2]) {
+                console.log(player.gesture[4] + " wins!");
+            } else if (gestureTwo === player.gesture[0]) {
+                console.log(player.gesture[4] + " wins!");
+            } else if (gestureTwo === player.gesture[3]) {
+                console.log(player.gesture[3] + " wins!");
+            } else {
+                console.log(player.gesture[1] + " wins!");
+            }
+        }
+    }
+
+
+
+    compareGesture(oneGest, twoGest, player){
+       if(oneGest === twoGest){
+        console.log("It is a tie!");
+       }
+       else if(oneGest === player.gesture[0] && twoGest === player.gesture[2] || player.gesture[3]){
+        console.log("Player One wins!");
+       }
+       else if(twoGest === player.gesture[0] && oneGest === player.gesture[2] || player.gesture[3]){
+        console.log("Player Two wins!");
+       }
+       else if(oneGest === player.gesture[1] && twoGest === player.gestur[0] || player.gesture[4]){
+        console.log("Player One wins!");
+       }
+       else if(twoGest === player.gesture[1] && oneGest === player.gestur[0] || player.gesture[4]){
+        console.log("Player Two wins!");
+       }
+       else if(oneGest === player.gesture[2] && twoGest === player.gesture[1] || player.gesture[3]){
+        console.log("Player One wins!");
+       }
+       else if(twoGest === player.gesture[2] && oneGest === player.gesture[1] || player.gesture[3]){
+        console.log("Player Two wins!");
+       }
+       else if(oneGest === player.gesture[3] && twoGest === player.gesture[4] || player.gesture[1]){
+        console.log("Player One wins!");
+       }
+       else if(twoGest === player.gesture[3] && oneGest === player.gesture[4] || player.gesture[1]){
+        console.log("Player Two wins!");
+       }
+       else if(oneGest === player.gesture[4] && twoGest === player.gesture[2] || player.gesture[0]){
+        console.log("Player One wins!");
+       }
+       else(twoGest === player.gesture[4] && oneGest === player.gesture[2] || player.gesture[0]);
+        console.log("Player Two wins!");
+       
+   }

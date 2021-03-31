@@ -5,12 +5,18 @@ const AI = require("./players")
 let prompt = require("prompt-sync")();
 const {selectGesture} = Player
 const playerOne = require("./players")
-console.log(playerOne);
+
+
+let nameOne = prompt("Enter name for player one: ");
+let nameTwo = prompt("Enter name for player two: ");
+
+
+let playerOne = new Human(nameOne, selectGesture());
+let playerTwo = new Human(nameTwo, selectGesture());
 
 class Game {
     constructor(){
-        this.singleMove = selectGender
-        this.playerObject = new AI(prompt("Enter your Name: "), singleMove)
+        
     }
 
     playOption(){
