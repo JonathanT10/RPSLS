@@ -10,11 +10,23 @@ class Player{
         
     }
 }
+
+class AI extends Player {
+    constructor(name, score, choosenGest){
+        super(name, score, choosenGest);
+       
+    }
+
+    randomGesture(array){
+        result = array[Math.floor(Math.random()*array.length)];
+        return result;
+    }
+}
+
 let playerOne = new Player("Player One", 0);
 let playerTwo = new Player("Player Two", 0);
+let playerAi = new AI("Machine", 0);
 
-// console.log(playerOne.score);
-// console.log(playerTwo);
 
 class Game{
     constructor(player){
@@ -23,8 +35,20 @@ class Game{
         this.playerTwo = new Player("Player Two", 0);
     }
 
+    playOption(){
+        let numberPlayers = prompt("Would you like to play Single Player or Mulitplayer? \n1. Single Player \n2. Multiplayer");
+        switch(numberPlayers){
+            case "1":
+                console.log("You selected Single Player.")
+            break;
+            case "2":
+               console.log("You selected Multiplayer.")
+            break;
+        }return numberPlayers;
+    }
+
     selectGesture(player){
-        let pick = prompt("Pick your move: \n1. " + this.player.gesture[0] + " \n2. " + this.player.gesture[1] + " \n3. " + this.player.gesture[2] + " \n4. " + this.player.gesture[3] + " \n5. " + this.player.gesture["4"]);
+        let pick = prompt("Pick your move " + player.name +": \n1. " + this.player.gesture[0] + " \n2. " + this.player.gesture[1] + " \n3. " + this.player.gesture[2] + " \n4. " + this.player.gesture[3] + " \n5. " + this.player.gesture["4"]);
         switch(pick){
             case "1":
                 player.choosenGest = player.gesture[0];
@@ -56,92 +80,163 @@ class Game{
        console.log("It is a tie!")}
        else if( oneGest === "rock"){
            if(twoGest === "scissors" || "lizard"){
-            console.log("Player one wins!");
+            console.log(playerO.name + " wins!");
             playerO.score++;
            }
         }
         else if(twoGest === "rock"){
             if(oneGest === "scissors" || "lizard"){
-             console.log("Player two wins!");
+             console.log(playerT.name + " wins!");
              playerT.score++;
             }
          }
         else if(oneGest === "scissors"){
             if(twoGest === "paper" || "lizard"){
-             console.log("Player one wins!");
+             console.log(playerO.name + "wins!");
              playerO.score++;
             }
          }
         else if(twoGest === "scissors"){
             if(oneGest === "paper" || "lizard"){
-             console.log("Player two wins!");
+             console.log(playerT.name + " wins!");
              playerT.score++;
             }
          }
         else if(oneGest === "paper"){
             if(twoGest === "rock" || "spock"){
-             console.log("Player one wins!");
+             console.log(playerO.name + " wins!");
              playerO.score++;
             }
          }
         else if(twoGest === "paper"){
             if(oneGest === "rock" || "spock"){
-             console.log("Player two wins!");
+             console.log(playerT.name + " wins!");
              playerT.score++;
             }
          }
         else if(oneGest === "lizard"){
             if(twoGest === "spock" || "paper"){
-             console.log("Player one wins!");
+             console.log(playerO.name + " wins!");
              playerO.score++;
             }
          }
         else if(twoGest === "lizard"){
             if(oneGest === "spock" || "paper"){
-             console.log("Player two wins!");
+             console.log(playerT.name + "wins!");
              playerT.score++;
             }
          }
         else if(oneGest === "spock"){
             if(twoGest === "scissors" || "rock"){
-             console.log("Player one wins!");
+             console.log(playerO.name + " wins!");
              playerO.score++;
             }
          }
         else if(twoGest === "spock"){
             if(oneGest === "scissors" || "rock"){
-             console.log("Player two wins!");
+             console.log(playerT.name + " wins!");
              playerT.score++;
             }
          }
     }
 
-    // bestOfThree(scoreO, scoreT, playerO, playerT, chooseGO, chooseGT){
-    //     while(playerOne.score < 3 || playerTwo.score < 3){
-    //         this.selectGesture(playerO);
-    //         this.selectGesture(playerT);
-    //         this.compareGesture(chooseGO, chooseGT, playerO, playerT);
-        }
-
-        
+    randomGesture(array){
+       let result = array[Math.floor(Math.random()*array.length)];
+        return result;
     }
+
+    runGame(){
+    let one = new Game(playerOne);
+    let two = new Game(playerTwo);
+    let ai = new Game(playerAi);
+    let numplay = one.playOption();
+    let oneScore = playerOne.score;
+    let twoScore = playerTwo.score;
+    let aiScore = playerAi.score;
+    console.log(numplay);
+        if(numplay == 1){
+            while(oneScore <= 3 && aiScore <= 3){
+             let roundOne = one.selectGesture(playerOne);
+             let roundAi = ai.randomGesture(playerAi.gesture);
+             one.compareGesture(playerOne.choosenGest, roundAi, playerOne, playerAi);
+             oneScore = playerOne.score;
+             aiScore = playerAi.score;
+            }
+                 if(playerOne.score >= playerAi.score){
+                    console.log("Player One Wins!");
+                }
+                else(console.log("Machine Wins"));
+                console.log(playerOne.name + ": " + playerOne.score);
+                console.log(playerAi.name + ": " + playerAi.score);
+        }
+        else if(numplay == 2){
+            while(oneScore <= 3 && twoScore <= 3){
+                let roundOne = one.selectGesture(playerOne);
+                let roundTwo = two.selectGesture(playerTwo);
+                one.compareGesture(playerOne.choosenGest, playerTwo.choosenGest, playerOne, playerTwo);
+                oneScore = playerOne.score;
+                twoScore = playerTwo.score;
+            }
+                if(playerOne.score >= playerTwo.score){
+                    console.log("Player One Wins!");
+                }
+                else(console.log("Player Two Wins!"));
+                console.log(playerOne.name + ": " + playerOne.score);
+                console.log(playerTwo.name + ": " + playerTwo.score);
+                
+        }
+    }
+    
 }
 
-let one = new Game(playerOne);
-let roundOne = one.selectGesture(playerOne);
-//console.log(playerOne.choosenGest);
-
-let two = new Game(playerTwo);
-let roundTwo = two.selectGesture(playerTwo);
-//console.log(playerTwo.choosenGest);
-
-one.compareGesture(playerOne.choosenGest, playerTwo.choosenGest, playerOne, playerTwo);
-//one.bestOfThree(playerOne.score, playerTwo.score, playerOne, playerTwo, playerOne.choosenGest, playerTwo.choosenGest);
+let game = new Game 
+game.runGame();
 
 
-console.log(playerOne.score);
-console.log(playerTwo.score);
-//console.log(running);
+
+
+
+// let one = new Game(playerOne);
+// let two = new Game(playerTwo);
+// let ai = new Game(playerAi);
+// let numplay = one.playOption();
+// let oneScore = playerOne.score;
+// let twoScore = playerTwo.score;
+// let aiScore = playerAi.score;
+// console.log(numplay);
+//     if(numplay == 1){
+//         while(oneScore <= 3 && aiScore <= 3){
+//          let roundOne = one.selectGesture(playerOne);
+//          let roundAi = ai.randomGesture(playerAi.gesture);
+//          one.compareGesture(playerOne.choosenGest, roundAi, playerOne, playerAi);
+//          oneScore = playerOne.score;
+//          aiScore = playerAi.score;
+//         }
+//              if(playerOne.score >= playerAi.score){
+//                 console.log("Player One Wins!");
+//             }
+//             else(console.log("Machine Wins"));
+//             console.log(playerOne.name + ": " + playerOne.score);
+//             console.log(playerAi.name + ": " + playerAi.score);
+//     }
+//     else if(numplay == 2){
+//         while(oneScore <= 3 && twoScore <= 3){
+//             let roundOne = one.selectGesture(playerOne);
+//             let roundTwo = two.selectGesture(playerTwo);
+//             one.compareGesture(playerOne.choosenGest, playerTwo.choosenGest, playerOne, playerTwo);
+//             oneScore = playerOne.score;
+//             twoScore = playerTwo.score;
+//         }
+//             if(playerOne.score >= playerTwo.score){
+//                 console.log("Player One Wins!");
+//             }
+//             else(console.log("Player Two Wins!"));
+//             console.log(playerOne.name + ": " + playerOne.score);
+//             console.log(playerTwo.name + ": " + playerTwo.score);
+            
+//     }
+    
+
 
 
 
