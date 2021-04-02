@@ -3,15 +3,13 @@ let prompt = require("prompt-sync")();
 const Player = require("./player");
 const AI = require("./player");
 const {playerOne, playerTwo, playerAi} = Player;
-//console.log(Player);
-//console.log(playerOne);
+
 
 
 class Game{
     constructor(player){
         this.player = player;
-        //this.playerOne = new Player("Player One", 0);
-        //this.playerTwo = new Player("Player Two", 0);
+    
     }
 
     playOption(){
