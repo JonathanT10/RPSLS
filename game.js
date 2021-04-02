@@ -57,70 +57,84 @@ class Game{
         return pick;
     }
 
-
-   compareGesture(oneGest, twoGest, playerO, playerT){
-       if(oneGest === twoGest){
-       console.log("It is a tie!")}
-       else if( oneGest === this.player.gesture[0]){
-           if(twoGest === this.player.gesture[2] || this.player.gesture[3]){
-            console.log(playerO.name + " wins!");
-            playerO.score++;
-           }
+    compareGesture(oneGest, twoGest, playerO, playerT){
+        if(oneGest === twoGest){
+         console.log("It is a tie!")}
+         else if (oneGest === "Rock") {
+            if (twoGest === "Scissors") {
+                console.log(playerO.name + " wins!");
+                playerO.score++;
+            } else if (twoGest === "Paper") {
+                console.log(playerT.name + " wins!");
+                playerT.score++;
+            } else if (twoGest === "Lizard") {
+                console.log(playerO.name + " wins!");
+                playerO.score++;
+            } else {
+                console.log(playerT.name + " wins!");
+                playerT.score++;
+            }
+        }   
+        else if (oneGest === "Paper") {
+            if (twoGest === "Scissors") {
+                console.log(playerT.name + " wins!");
+                playerT.score++;
+            } else if (twoGest === "Rock") {
+                console.log(playerO.name + " wins!");
+                playerO.score++;
+            } else if (twoGest === "Lizard") {
+                console.log(playerT.name + " wins!");
+                playerT.score++;
+            } else {
+                console.log(playerO.name + " wins!");
+                playerO.score++;
+            }
         }
-        else if(twoGest === this.player.gesture[0]){
-            if(oneGest === this.player.gesture[2]|| this.player.gesture[3]){
-             console.log(playerT.name + " wins!");
-             playerT.score++;
+        else if (oneGest === "Scissors") {
+            if (twoGest === "Paper") {
+                console.log(playerO.name + " wins!");
+                playerO.score++;
+            } else if (twoGest === "Rock") {
+                console.log(playerT.name + " wins!");
+                playerT.score++;
+            } else if (twoGest === "Lizard") {
+                console.log(playerO.name + " wins!");
+                playerO.score++;
+            } else {
+                console.log(playerT.name + " wins!");
+                playerT.score++;
             }
-         }
-        else if(oneGest === this.player.gesture[2]){
-            if(twoGest === this.player.gesture[1] || this.player.gesture[3]){
-             console.log(playerO.name + " wins!");
-             playerO.score++;
+        }
+        else if (oneGest === "Lizard") {
+            if (twoGest === "Scissors") {
+                console.log(playerT.name + " wins!");
+                playerT.score++;
+            } else if (twoGest === "Rock") {
+                console.log(playerT.name + " wins!");
+                playerT.score++;
+            } else if (twoGest === "Paper") {
+                console.log(playerO.name + " wins!");
+                playerO.score++;
+            } else {
+                console.log(playerO.name + " wins!");
+                playerO.score++;
             }
-         }
-        else if(twoGest === this.player.gesture[2]){
-            if(oneGest === this.player.gesture[1] || this.player.gesture[3]){
-             console.log(playerT.name + " wins!");
-             playerT.score++;
+        }
+        else if (oneGest === "Spock") {
+            if (twoGest === "Scissors") {
+                console.log(playerO.name + " wins!");
+                playerO.score++;
+            } else if (twoGest === "Rock") {
+                console.log(playerO.name + " wins!");
+                playerO.score++;
+            } else if (twoGest === "Lizard") {
+                console.log(playerT.name + " wins!");
+                playerT.score++;
+            } else {
+                console.log(playerT.name + " wins!");
+                playerT.score++;
             }
-         }
-        else if(oneGest === this.player.gesture[1]){
-            if(twoGest === this.player.gesture[0] || this.player.gesture[4]){
-             console.log(playerO.name + " wins!");
-             playerO.score++;
-            }
-         }
-        else if(twoGest === this.player.gesture[1]){
-            if(oneGest === this.player.gesture[0] || this.player.gesture[4]){
-             console.log(playerT.name + " wins!");
-             playerT.score++;
-            }
-         }
-        else if(oneGest === this.player.gesture[3]){
-            if(twoGest === this.player.gesture[4]|| this.player.gesture[1]){
-             console.log(playerO.name + " wins!");
-             playerO.score++;
-            }
-         }
-        else if(twoGest === this.player.gesture[3]){
-            if(oneGest === this.player.gesture[4] || this.player.gesture[1]){
-             console.log(playerT.name + " wins!");
-             playerT.score++;
-            }
-         }
-        else if(oneGest === this.player.gesture[4]){
-            if(twoGest === this.player.gesture[2] || this.player.gesture[0]){
-             console.log(playerO.name + " wins!");
-             playerO.score++;
-            }
-         }
-        else if(twoGest === this.player.gesture[4]){
-            if(oneGest === this.player.gesture[2] || this.player.gesture[0]){
-             console.log(playerT.name + " wins!");
-             playerT.score++;
-            }
-         }
+        }
     }
 
     randomGesture(array){
