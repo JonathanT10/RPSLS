@@ -1,4 +1,45 @@
 
+
+let one = new Game(playerOne);
+let two = new Game(playerTwo);
+let ai = new Game(playerAi);
+let numplay = one.playOption();
+let oneScore = playerOne.score;
+let twoScore = playerTwo.score;
+let aiScore = playerAi.score;
+console.log(numplay);
+    if(numplay == 1){
+        while(oneScore <= 3 && aiScore <= 3){
+         let roundOne = one.selectGesture(playerOne);
+         let roundAi = ai.randomGesture(playerAi.gesture);
+         one.compareGesture(playerOne.choosenGest, roundAi, playerOne, playerAi);
+         oneScore = playerOne.score;
+         aiScore = playerAi.score;
+        }
+             if(playerOne.score >= playerAi.score){
+                console.log("Player One Wins!");
+            }
+            else(console.log("Machine Wins"));
+            console.log(playerOne.name + ": " + playerOne.score);
+            console.log(playerAi.name + ": " + playerAi.score);
+    }
+    else if(numplay == 2){
+        while(oneScore <= 3 && twoScore <= 3){
+            let roundOne = one.selectGesture(playerOne);
+            let roundTwo = two.selectGesture(playerTwo);
+            one.compareGesture(playerOne.choosenGest, playerTwo.choosenGest, playerOne, playerTwo);
+            oneScore = playerOne.score;
+            twoScore = playerTwo.score;
+        }
+            if(playerOne.score >= playerTwo.score){
+                console.log("Player One Wins!");
+            }
+            else(console.log("Player Two Wins!"));
+            console.log(playerOne.name + ": " + playerOne.score);
+            console.log(playerTwo.name + ": " + playerTwo.score);
+            
+    }
+    
     playOption(){
         let numberPlayers = prompt("Would you like to play Single Player or Mulitplayer? \n1. Single Player \n2. Multiplayer\n");
         switch(numberPlayers){
